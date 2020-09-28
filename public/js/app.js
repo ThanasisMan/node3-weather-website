@@ -2,6 +2,7 @@ const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')
 const messageOne = document.querySelector('#message-1')
 const messageTwo = document.querySelector('#message-2')
+const weatherIcon = document.querySelector('#weathericon')
 
 weatherForm.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -10,15 +11,19 @@ weatherForm.addEventListener('submit', (e) => {
 
     messageOne.textContent = 'Loading...'
     messageTwo.textContent = ''
+    weatherIcon.innerHTML = ''
 
     fetch(url).then((response) => {
         response.json().then((data) => {
             if (data.error) {
                 messageOne.textContent = data.error
                 messageTwo.textContent = ''
+                weatherIcon.innerHTML = ''
             } else {
-                messageOne.textContent = 'The forecast info for ' + data.location + ' is:'
-                messageTwo.textContent = data.weatherDescription + '. It is currently ' + data.forecast + ' degrees out. It feels like ' + data.feelslike + ' degrees out.'
+                console.log(data)
+                messageOne.textContent = 'The current forecast info for ' + data.location
+                weatherIcon.innerHTML = '<img src="' + data.weatherIconUrl + '" >'
+                messageTwo.textContent = data.weatherDescription + '. It is currently ' + data.forecast + ' degrees out. It feels like ' + data.feelslike + ' degrees out. The humidity is ' + data.humidity + '%.'
             }
 
         })

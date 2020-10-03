@@ -26,22 +26,22 @@ app.use(express.static(publicPath))
 app.get('', (req, res) => {
     res.render('index', {
         title: 'Weather',
-        name: "Thanassis"
+        name: "Thanasis"
     })
 })
 
 app.get('/help', (req, res) => {
     res.render('help', {
         title: 'Help Page',
-        helpText: 'This documantation will help you through serfing the whether app!',
-        name: 'Thanassis'
+        helpText: 'This documantation will help you for the whether app!',
+        name: 'Thanasis'
     })
 })
 
 app.get('/about', (req, res) => {
     res.render('about', {
         title: 'About Page',
-        name: 'Thanassis'
+        name: 'Thanasis'
     })
 })
 
@@ -87,15 +87,15 @@ app.get('/help/*', (req, res) => {
     res.render('404', {
         title: 'My 404 page',
         errorMessage: 'The help article not found!',
-        name: 'Thanassis'
+        name: 'Thanasis'
     })
 })
 
 app.get('*', (req, res) => {
     res.render('404', {
-        title: 'My 404 page',
+        title: '404 error',
         errorMessage: 'The page not found',
-        name: 'Thanassis'
+        name: 'Thanasis'
     })
 })
 

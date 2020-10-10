@@ -11,16 +11,29 @@
 <body>
     <div class="main-content">
         {{>header}}
-        <p>Use this site to get Weather info!</p>
+        <hr>
+        <p>Use this weather forecast finder to locate current weather forecasts for cities and smaller places worldwide.</p><br>
 
         <form>
             <input placeholder="Location">
             <button>Search</button>
         </form>
 
-        <p id="message-1"></p>
-        <div id="weathericon"></div>
-        <p id="message-2"></p>
+        <p><span id="message-1"></span><span id="message-3" style="font-weight:bold"></span></p><br>
+
+        <table name="tableinfo" cellspacing="0" cellpadding="3" border="0" width="100%">
+            <tr>
+                <td align="center" width="20%"">
+                    <div id="weathericon"></div>
+                </td>
+                <td>
+                    <p id="message-2"></p>
+                </td>
+            </tr>
+        </table>
+
+        
+        
     </div>
 
     {{>footer}}

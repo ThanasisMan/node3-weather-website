@@ -25,7 +25,7 @@ app.use(express.static(publicPath))
 
 app.get('', (req, res) => {
     res.render('index', {
-        title: 'Weather',
+        title: 'Weather Forecast Finder',
         name: "Thanasis"
     })
 })
@@ -59,7 +59,16 @@ app.get('/weather', (req, res) => {
             })
         }
 
-        forecast.forecast(latitude, longitude, (error, { weatherDescription, temperature, feelslike, humidity, weatherIconUrl } = {}) => {
+        forecast.forecast(latitude, longitude, (error, {
+            weatherDescription,
+            temperature,
+            feelslike,
+            humidity,
+            weatherIconUrl,
+            visibility,
+            wind_speed,
+            cloudcover
+        } = {}) => {
             if (error) {
                 return res.send({
                     error: error
@@ -67,13 +76,16 @@ app.get('/weather', (req, res) => {
             }
 
             res.send({
-                    location: location,
-                    weatherDescription: weatherDescription,
+                    location,
+                    weatherDescription,
                     forecast: temperature,
-                    feelslike: feelslike,
+                    feelslike,
                     address: req.query.address,
-                    humidity: humidity,
-                    weatherIconUrl: weatherIconUrl
+                    humidity,
+                    weatherIconUrl,
+                    visibility,
+                    wind_speed,
+                    cloudcover
                 })
                 //console.log('The forecast info for ' + location + ' is:')
                 //console.log(weatherDescription + '. It is currently ' + temperature + ' degrees out. It feels like ' + feelslike + ' degrees out.')
